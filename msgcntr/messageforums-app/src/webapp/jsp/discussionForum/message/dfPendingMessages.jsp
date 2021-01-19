@@ -14,7 +14,7 @@
        		<script src="/messageforums-tool/js/sak-10625.js"></script>
 		<script src="/messageforums-tool/js/forum.js"></script>
 
-
+		<%@ include file="/jsp/discussionForum/menu/forumsMenu.jsp" %>
 			<h3>
 				<h:commandLink action="#{ForumTool.processActionHome}" value="#{msgs.cdfm_message_forums}" title=" #{msgs.cdfm_message_forums}"
 			      		rendered="#{ForumTool.messagesandForums}" />
@@ -25,29 +25,25 @@
 			</h3>
 			<script>
 				$(document).ready(function() {
-				$('.table table-hover table-striped table-bordered tr th a').fadeTo("fast",0.50)	
-			    //deactivate remove link if nothing checked
-			    $(':checkbox').click(function(){
-			        var makeActive = false
-			        $('tr').removeClass('selectedSelected');
-			        $('td :checkbox').each(function(){
-			            if (this.checked) {
-			                makeActive = true
-			                $(this).parents("tr").addClass('selectedSelected');
-			            }
-			        });
-			        if (makeActive) {
-						$('.table table-hover table-striped table-bordered tr th a').fadeTo("fast",1)
-			        }
-			        else {
-						$('.table table-hover table-striped table-bordered tr th a').fadeTo("fast",0.50)			        }
-
+		  			document.getElementById("forumsQueueMenuLink").classList.add("current");
+					$('.table table-hover table-striped table-bordered tr th a').fadeTo("fast",0.50);	
+			    		//deactivate remove link if nothing checked
+			    		$("#msgForum\\:pendingMsgs\\:mainCheckbox").click(function () {
+ 		                             var makeActive = false;
+			        	     $('tr').removeClass('selectedSelected');
+			        	     $(".pending-message-checkbox").each(function () {
+			            		if (this.checked) {
+			                		makeActive = true;
+			                		$(this).parents("tr").addClass('selectedSelected');
+			            		}
+			        	     });
+			        	     if (makeActive) {
+							$('.table table-hover table-striped table-bordered tr th a').fadeTo("fast",1);
+ 	 	 				} else {                                                			
+		  				   $('.table table-hover table-striped table-bordered tr th a').fadeTo("fast",0.50);
+		                                }
 			    });
-
-
-
-
-				});
+			});
 			</script>
 			
 		<div class="instruction">
@@ -65,7 +61,7 @@
 				<f:facet name="header">
 					<h:selectBooleanCheckbox title="#{msgs.cdfm_checkall}" id="mainCheckbox" onclick="javascript:selectDeselectCheckboxes(this.id, document.forms[0]);"/>
 				</f:facet>
-					<h:selectBooleanCheckbox value="#{message.selected}" id="childCheckbox" onclick="javascript:resetMainCheckbox('msgForum:pendingMsgs:mainCheckbox');"/>
+					<h:selectBooleanCheckbox value="#{message.selected}" id="childCheckbox" styleClass="pending-message-checkbox" onclick="javascript:resetMainCheckbox('msgForum:pendingMsgs:mainCheckbox');"/>
 			</h:column>
 			<h:column>
 				<f:facet name="header">
