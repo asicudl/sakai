@@ -299,14 +299,6 @@
       </snapshots>
     </repository>
     <repository>
-      <id>repository.spring.libs.release</id>
-      <name>Spring Lib Repository</name>
-      <url>https://repo.spring.io/libs-release</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-    <repository>
       <id>sakai-maven2-snapshots</id>
       <name>Sakai Maven Repo</name>
       <layout>default</layout>
@@ -730,9 +722,9 @@
         <scope>provided</scope>
       </dependency>
       <dependency>
-        <groupId>org.z3950.zing</groupId>
+        <groupId>org.dspace</groupId>
         <artifactId>cql-java</artifactId>
-        <version>1.12</version>
+        <version>1.0</version>
         <scope>provided</scope>
       </dependency>
       <dependency>
